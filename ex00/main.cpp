@@ -6,11 +6,19 @@
 /*   By: zsyyida <zsyyida@student42abudhabi.ae>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:14:18 by zsyyida           #+#    #+#             */
-/*   Updated: 2023/12/11 13:25:15 by zsyyida          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:23:38 by zsyyida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include BitcoinExchange.hpp"
+#include "BitcoinExchange.hpp"
+
+int	main(int ac, char **av)
+{
+	if (ac !=2)
+		throw CouldNotOpenFileException);
+		
+}
+// std::map<std::string, int> myMap;
 
 // expected output
 // $> ./btc

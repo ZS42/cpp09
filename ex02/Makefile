@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: zsyyida <zsyyida@student42abudhabi.ae>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/11 13:09:20 by zsyyida           #+#    #+#              #
-#    Updated: 2023/12/11 13:10:21 by zsyyida          ###   ########.fr        #
+#    Created: 2023/12/11 13:16:34 by zsyyida           #+#    #+#              #
+#    Updated: 2023/12/11 13:17:38 by zsyyida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = RPN
+NAME = PmergeMe
 
 CXX = c++
 
@@ -18,7 +18,7 @@ RM = rm -rf
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
-SRCS = main.cpp RPN.cpp
+SRCS = main.cpp PmergeMe.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 

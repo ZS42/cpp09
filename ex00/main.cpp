@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsyyida <zsyyida@student42abudhabi.ae>     +#+  +:+       +#+        */
+/*   By: zsyyida <zsyyida@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:14:18 by zsyyida           #+#    #+#             */
-/*   Updated: 2023/12/11 15:23:38 by zsyyida          ###   ########.fr       */
+/*   Updated: 2023/12/14 01:59:33 by zsyyida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,22 @@
 
 int	main(int ac, char **av)
 {
-	if (ac !=2)
-		throw CouldNotOpenFileException);
-		
+	BitcoinExchange A;
+	(void)av;
+	try
+	{
+		if (ac !=2)
+			throw BitcoinExchange::CouldNotOpenFileException();
+		else
+		{
+			A.makeDatabase();
+			A.makeDatabase(av[1]);
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}	
 }
 // std::map<std::string, int> myMap;
 

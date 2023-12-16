@@ -6,7 +6,7 @@
 /*   By: zsyyida <zsyyida@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:12:11 by zsyyida           #+#    #+#             */
-/*   Updated: 2023/12/14 18:55:58 by zsyyida          ###   ########.fr       */
+/*   Updated: 2023/12/16 23:30:46 by zsyyida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ BitcoinExchange::BitcoinExchange(std:: string inputFile):_inputFile(inputFile), 
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &object):_inputFile(), _BitcoinValueDatabase(), _BitcoinRateDatabase()
 {
-//    this->_inputFile = object._inputFile;
-//    this->_BitcoinValueDatabase = object._BitcoinValueDatabase;
-//    this->_BitcoinRateDatabase = object._BitcoinRateDatabase;
     *this = object;
     std::cout << "Copy constructor called" << std::endl;
 }
@@ -35,7 +32,8 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &object)
 {
     if (this != &object)
     {
-        
+        _BitcoinValueDatabase.clear();
+        _BitcoinRateDatabase.clear();
         this->_inputFile = object._inputFile;
         this->_BitcoinValueDatabase = object._BitcoinValueDatabase;
         this->_BitcoinRateDatabase = object._BitcoinRateDatabase;
@@ -92,7 +90,7 @@ void   BitcoinExchange::makeDatabase(std::string inputFile)
 
     
     std::ifstream	ifs;
-    ifs.open(filename);
+    ifs.open(filename.c_str());
     if (!ifs.is_open())
         throw CouldNotOpenFileException();
     while (std::getline(ifs, line))
@@ -111,11 +109,7 @@ void   BitcoinExchange::makeDatabase(std::string inputFile)
                     continue ;
                 }
                 // why does i need to be 1 and not 0??
-                for(size_t i = 1; i < bitcoin_value.length(); i++)
-                {
-                    if (!(std::isdigit(bitcoin_value[i])) && bitcoin_value[i] != '.' && bitcoin_value[i] != '-')
-                        throw (NotNumberException());
-                }
+                    
                 //bc atof requires pointer to string use c_str
                 float value = atof(bitcoin_value.c_str());
                 if (value < 0)
@@ -159,7 +153,7 @@ void   BitcoinExchange::makeDatabase()
     std::string rate;
     
     std::ifstream	ifs;
-    ifs.open(filename);
+    ifs.open(filename.c_str());
     if (!ifs.is_open())
         throw CouldNotOpenFileException();
     while (std::getline(ifs, line))

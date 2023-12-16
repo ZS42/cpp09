@@ -6,7 +6,7 @@
 /*   By: zsyyida <zsyyida@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:14:18 by zsyyida           #+#    #+#             */
-/*   Updated: 2023/12/14 01:59:33 by zsyyida          ###   ########.fr       */
+/*   Updated: 2023/12/16 17:54:25 by zsyyida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int ac, char **av)
 {
 	BitcoinExchange A;
-	(void)av;
 	try
 	{
 		if (ac !=2)

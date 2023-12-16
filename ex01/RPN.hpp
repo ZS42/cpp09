@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsyyida <zsyyida@student42abudhabi.ae>     +#+  +:+       +#+        */
+/*   By: zsyyida <zsyyida@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:15:31 by zsyyida           #+#    #+#             */
-/*   Updated: 2023/12/11 15:36:37 by zsyyida          ###   ########.fr       */
+/*   Updated: 2023/12/17 02:20:50 by zsyyida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <deque>
+#include <stdexcept>
+#include <cstdlib> // for atoi
 
 # define RED "\033[0;31m"
 # define GREEN "\033[38:5:2m"
@@ -22,14 +24,27 @@
 # define YELLOW  "\033[33m"
 # define RESET "\033[0m"
 
-template<typename T, typename Container = std::deque<T> >
-class RPN :public std::deque<T>
+class RPN
 {
+	std::deque<int> _RPN_Database;
+	std::string _input;
 	public:
 		RPN();
-		RPN(Container C);
+		RPN(std::string input);
 		RPN(const RPN &object);
 		RPN &operator=(const RPN &object);
 		~RPN();
+		bool checkValidInput(std::string input);
+		void calculate(std::string inputFile);
+		class BadInputException : public std::exception
+		{
+			public:
+				virtual const char * what () const throw ();
+		};
+		class DivisionByZeroException: public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
 };
 #endif

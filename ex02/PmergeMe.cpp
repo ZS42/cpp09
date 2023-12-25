@@ -6,7 +6,7 @@
 /*   By: zsyyida <zsyyida@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:17:45 by zsyyida           #+#    #+#             */
-/*   Updated: 2023/12/25 20:36:32 by zsyyida          ###   ########.fr       */
+/*   Updated: 2023/12/25 22:39:28 by zsyyida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void PmergeMe::mergeInsertVector()
 	}
 	if (_myPairedVector.size() * 2 != _unsortedNbrVector.size())
     {
-        std::cout << _myPairedVector.size() * 2 << _unsortedNbrVector.size() << "hello\n";
+        // std::cout << _myPairedVector.size() * 2 << _unsortedNbrVector.size() << "hello\n";
         _sortedNbrVector.insert(std::lower_bound(_sortedNbrVector.begin(), _sortedNbrVector.end(), _unsortedNbrVector[_unsortedNbrVector.size() - 1]),_unsortedNbrVector[_unsortedNbrVector.size() - 1]);
     }
     // for(std::vector<int>::iterator vItr = _sortedNbrVector.begin(); vItr != _sortedNbrVector.end(); vItr++)
@@ -245,11 +245,13 @@ void PmergeMe::mergeInsertList()
     {
         size_t index = jacobsthalSequence[j];
         // int length = index + sortedIndex;
-        for (size_t i = index - 1; i > sortedIndex - 1; i--)
+        for (size_t i = index - 1; i > sortedIndex; i--)
         {
+        // std::cout << "hello\n";
             // advance advances the iterator it3 by n element positions.
             // next does the same but doesn't move iterator. Instead returns a new one
-            std::list<std::pair<int,int> >::iterator it3 = std::next(myPairedListIt, i);
+            std::list<std::pair<int,int> >::iterator it3 = myPairedList.begin();
+            std::advance(it3, i);
             // std::cout << RED << it3->first << " , " << it3->second << RESET;
             // Find the position to insert the element
             std::list<int>::iterator insertPosition = std::lower_bound(_sortedNbrList.begin(), _sortedNbrList.end(), it3->first);
@@ -257,16 +259,16 @@ void PmergeMe::mergeInsertList()
             // lower_bound returns an iterator pointing to the first element in the range [first,last) which does not compare less than val.
             // takes forward iterators to the initial and final positions of a sorted sequence and value of the lower bound to search for in the range.
             _sortedNbrList.insert(insertPosition, it3->first);
-            it3 = std::next(myPairedListIt, -i);
+            std::advance(it3, -i);
         }
         sortedIndex = index - 1;
     }
     // for when jacobthal is > pairedlists size
-    sortedIndex = 1;
-    while (sortedIndex++ < myPairedList.size())
+    while (sortedIndex++ < myPairedList.size() - 1)
     {
         std::list<std::pair<int,int> >::iterator it3 =  myPairedList.begin();
-        it3 = std::next(myPairedListIt, sortedIndex);
+        std::advance(it3, sortedIndex);
+        // std::cout << RED << it3->first << "\n";
         std::list<int>::iterator insertPosition = std::lower_bound(_sortedNbrList.begin(), _sortedNbrList.end(), it3->first);
         _sortedNbrList.insert(insertPosition, it3->first);
     }

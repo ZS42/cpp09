@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zsyyida <zsyyida@student42abudhabi.ae>     +#+  +:+       +#+         #
+#    By: zsyyida <zsyyida@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 13:16:34 by zsyyida           #+#    #+#              #
-#    Updated: 2023/12/11 13:17:38 by zsyyida          ###   ########.fr        #
+#    Updated: 2023/12/25 00:02:09 by zsyyida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CXX = c++
 
 RM = rm -rf
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
+#-fsanitize=address
 
 SRCS = main.cpp PmergeMe.cpp
 

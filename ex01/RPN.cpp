@@ -6,7 +6,7 @@
 /*   By: zsyyida <zsyyida@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 17:48:55 by zsyyida           #+#    #+#             */
-/*   Updated: 2023/12/17 02:27:32 by zsyyida          ###   ########.fr       */
+/*   Updated: 2023/12/18 23:55:10 by zsyyida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ RPN::RPN(std:: string input): _RPN_Database(), _input(input)
     // std::cout << "Parametric constructor called" << std::endl;
 }
 
-RPN::RPN(const RPN &object): _RPN_Database()
+RPN::RPN(const RPN &object): _RPN_Database(), _input()
 {
     *this = object;
     // std::cout << "Copy constructor called" << std::endl;
@@ -53,10 +53,8 @@ bool RPN::checkValidInput(std::string input)
         if (!(std::isdigit(input[i])) && input[i] != '+'  && input[i] != '-' && input[i] != '*' && input[i] != '/')
             return(true);
     }
-        // won't enter this loop
-    for(size_t j = 1; j < _input.length(); j+=2)
+    for(size_t j = 1; j < input.length() - 1; j+=2)
     {
-        std::cout <<GREEN << j << std::endl;
         if (input[j] != ' ')
             return(true);
     }
@@ -76,7 +74,8 @@ void RPN::calculate(std::string input)
     {
         if (std::isdigit(input[i]))
         {
-            _RPN_Database.push_back(std::atoi(&input[i]));
+            // _RPN_Database.push_back(std::atoi(&input[i]));
+            _RPN_Database.push_back(input[i] - '0');
         }
         else
         {
